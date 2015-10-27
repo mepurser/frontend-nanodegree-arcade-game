@@ -13,7 +13,6 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
-
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -26,7 +25,8 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.width = 505;
-    canvas.height = 606;
+    canvas.height = 620;
+
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -80,7 +80,6 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -93,6 +92,9 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
+        });
+        allPrizes.forEach(function(prize) {
+            prize.update(dt);
         });
         player.update();
     }
@@ -151,6 +153,9 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
+        allPrizes.forEach(function(prize) {
+            prize.render();
+        });
 
         player.render();
     }
@@ -172,7 +177,20 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/enemy-bug-flip.png',
+        'images/char-boy.png',
+        'images/Star.png',
+        'images/Selector.png',
+        'images/Rock.png',
+        'images/Key.png',
+        'images/Heart.png',
+        'images/Gem Orange.png',
+        'images/Gem Green.png',
+        'images/Gem Blue.png',
+        'images/char-princess-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-cat-girl.png'
     ]);
     Resources.onReady(init);
 
